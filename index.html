@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car</title>
+    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
+    <script src="base.js"></script>
+    <script src="car.js"></script>
+</head>
+<body>
+    <a-scene background="color:black">
+        <a-entity id="car" geometry="primitive: box" position="0 1.5 -5" material="color: red"></a-entity>
+    </a-scene>
+
+    <script>
+        // Add event listener
+        document.addEventListener('click', handleClick);
+
+        let counter = 0;
+
+        function handleClick() {
+            counter++;
+
+            // Change position of the car based on click count
+            const car = document.getElementById('car');
+            car.setAttribute('position', `0 ${1.5 + counter} -5`);
+
+            // Reset counter and position the car after 5 clicks
+            if (counter === 5) {
+                counter = 0;
+                car.setAttribute('position', '0 1.5 -5');
+            }
+        }
+    </script>
+</body>
+</html>
